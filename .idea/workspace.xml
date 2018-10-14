@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/venv/SnakeGame.py" line="75" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d7ba261-868f-4bcb-ad59-c8b4b8ba91ee" name="Default Changelist" comment="" />
+    <list default="true" id="1d7ba261-868f-4bcb-ad59-c8b4b8ba91ee" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/MastersProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MastersProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/NeuralNetwork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/ScreenReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/ScreenReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/SnakeGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/SnakeGame.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,78 +22,85 @@
     <session id="430043421">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="8" />
+          <entry key="npy" value="2" />
+          <entry key="py" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="8" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Python" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="24" />
-          <entry key="py" value="2383" />
+          <entry key="py" value="13458" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="2407" />
+          <entry key="Python" value="13482" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/SnakeGame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
+            <state relative-caret-position="164">
+              <caret line="413" column="70" selection-start-line="413" selection-start-column="70" selection-end-line="413" selection-end-column="70" />
               <folding>
                 <element signature="e#24#56#0" expanded="true" />
-                <marker date="1537651252299" expanded="true" signature="136:137" ph="..." />
-                <marker date="1537651252299" expanded="true" signature="453:454" ph="..." />
-                <marker date="1537651252299" expanded="true" signature="567:568" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="520:521" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="847:848" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="962:963" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="2006:2008" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="3581:8841" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="8992:9473" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="9495:9500" ph="..." />
+                <marker date="1539483169779" expanded="true" signature="12377:12380" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/KeyboardInputs.py">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+            <state relative-caret-position="212">
+              <caret line="310" selection-start-line="310" selection-end-line="310" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/ScreenReader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="15" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="6" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1537650991158" expanded="true" signature="583:588" ph="..." />
-              </folding>
+            <state relative-caret-position="-87">
+              <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/TensorFlow.py">
+        <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-233998280/numpy/core/multiarray.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            <state relative-caret-position="97">
+              <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -103,12 +120,40 @@
       <find>bloc</find>
       <find>sFontsFont</find>
       <find>changeTo</find>
-      <find>fpsController</find>
       <find>QUIT</find>
       <find>foodSpawn</find>
       <find>kEYBOARD D</find>
+      <find>grads_and_vars_feed</find>
       <find>init</find>
+      <find>cross_entropy</find>
+      <find>fpsController</find>
+      <find>fpsControlle</find>
+      <find>snake</find>
+      <find>D Pressed</find>
+      <find>snakeBody</find>
+      <find>45</find>
+      <find>game()</find>
+      <find>ga</find>
+      <find>rewa</find>
+      <find>reset</find>
+      <find>random</find>
+      <find>print</find>
+      <find>eyes</find>
+      <find>prevousObs</find>
+      <find>foodPos</find>
+      <find>main_</find>
+      <find>snakePos</find>
+      <find>getOb</find>
+      <find>random_</find>
+      <find>scoreRequirement</find>
     </findStrings>
+    <replaceStrings>
+      <replace>viewDistance</replace>
+      <replace>previousObs</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -116,17 +161,19 @@
         <option value="$PROJECT_DIR$/venv/TensorFlow.py" />
         <option value="$PROJECT_DIR$/SnakeGame.py" />
         <option value="$PROJECT_DIR$/venv/KeyboardInputs.py" />
+        <option value="$PROJECT_DIR$/venv/NeuralNetwork.py" />
         <option value="$PROJECT_DIR$/venv/ScreenReader.py" />
         <option value="$PROJECT_DIR$/venv/SnakeGame.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="180" />
-    <option name="y" value="-24" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -166,7 +213,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.ScreenReader">
+  <component name="RunManager" selected="Python.SnakeGame (1)">
     <configuration name="KeyboardInputs" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MastersProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,6 +227,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/KeyboardInputs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="NeuralNetwork" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MastersProject" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/NeuralNetwork.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -230,27 +298,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="SnakeGame" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="MastersProject" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SnakeGame.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="TensorFlow" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MastersProject" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -273,19 +320,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.SnakeGame" />
       <item itemvalue="Python.TensorFlow" />
       <item itemvalue="Python.SnakeGame (1)" />
       <item itemvalue="Python.KeyboardInputs" />
       <item itemvalue="Python.ScreenReader" />
+      <item itemvalue="Python.NeuralNetwork" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.ScreenReader" />
         <item itemvalue="Python.SnakeGame (1)" />
-        <item itemvalue="Python.KeyboardInputs" />
-        <item itemvalue="Python.SnakeGame" />
+        <item itemvalue="Python.NeuralNetwork" />
         <item itemvalue="Python.TensorFlow" />
+        <item itemvalue="Python.ScreenReader" />
+        <item itemvalue="Python.KeyboardInputs" />
       </list>
     </recent_temporary>
   </component>
@@ -304,13 +351,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.091675445" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29826465" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32321042" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -323,6 +371,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.091675445" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32321042" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.329718" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -336,10 +403,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SnakeGame.py" />
-    <entry file="file://$PROJECT_DIR$/venv/TensorFlow.py">
+    <entry file="file://$PROJECT_DIR$/venv/TensorFlow.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tensorflow/python/framework/tensor_shape.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        <state relative-caret-position="199">
+          <caret line="672" selection-start-line="672" selection-end-line="672" />
         </state>
       </provider>
     </entry>
@@ -350,26 +418,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/SnakeGame.py">
+    <entry file="file://$PROJECT_DIR$/venv/NeuralNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
-          <folding>
-            <element signature="e#24#56#0" expanded="true" />
-            <marker date="1537651252299" expanded="true" signature="136:137" ph="..." />
-            <marker date="1537651252299" expanded="true" signature="453:454" ph="..." />
-            <marker date="1537651252299" expanded="true" signature="567:568" ph="..." />
-          </folding>
+        <state relative-caret-position="432">
+          <caret line="38" column="21" selection-start-line="14" selection-end-line="38" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/ScreenReader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="5" selection-start-column="18" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="-87">
+          <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-233998280/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/statistics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/TrainingData.npy">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/SnakeGame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="413" column="70" selection-start-line="413" selection-start-column="70" selection-end-line="413" selection-end-column="70" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1537650991158" expanded="true" signature="583:588" ph="..." />
+            <element signature="e#24#56#0" expanded="true" />
+            <marker date="1539483169779" expanded="true" signature="520:521" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="847:848" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="962:963" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="2006:2008" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="3581:8841" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="8992:9473" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="9495:9500" ph="..." />
+            <marker date="1539483169779" expanded="true" signature="12377:12380" ph="..." />
           </folding>
         </state>
       </provider>
