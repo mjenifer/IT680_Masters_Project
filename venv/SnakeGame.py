@@ -11,32 +11,26 @@ from statistics import median, mean
 from collections import Counter
 import numpy as np
 
-learning_rate = 1e-3
-goalSteps = 300
-scoreRequirement = 50
-initialGames = 1000
-n_iterations = 1000
 
-n_inputs = 4
-n_hidden = 4
-n_outputs = 4
+goalSteps = 300
+scoreRequirement = 100
+initialGames = 3000
 
 keyboard = Controller()
 
 # check for initialising error
-check_error = pygame.init()
-if check_error[1] > 0:
+checkError = pygame.init()
+if checkError[1] > 0:
     print("(!) Had {0} initializing errors, exiting...".format(check_error[1]))
     sys.exit(-1)
 else:
     print("(+) PyGame successfully initialized")
 
-score = 0
-x = 0
-y = 30
-os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (x, y)
+mainScore = 0
 # Play Surface
-playSurface = pygame.display.set_mode((720, 460))
+MAX_WIDTH = 720
+MAX_HEIGHT = 460
+playSurface = pygame.display.set_mode((MAX_WIDTH, MAX_HEIGHT))
 pygame.display.set_caption('Snake Game ----:>')
 # time.sleep(5)
 
@@ -62,26 +56,6 @@ direction = 'UP'
 changeTo = direction
 score = 0
 
-
-def reset_variables():
-    global changeTo
-    global direction
-    global foodPos
-    global foodSpawn
-    global snakeBody
-    global snakePos
-
-    # Important Variables
-    snakePos = [100, 200]
-    snakeBody = [[100, 50], [90, 50], [80, 50]]  # ,[70,50],[60,50],[50,50],[40,50],[30,50],[20,50]
-
-    foodPos = [random.randrange(1, 72) * 10, random.randrange(1, 46) * 10]
-    foodSpawn = True
-
-    direction = 'UP'
-    changeTo = direction
-
-
 # Game Over Function
 def gameOver():
     myFont = pygame.font.SysFont('monaco', 72)
@@ -99,7 +73,7 @@ def gameOver():
 # score function
 def showScore(choice=1):
     sFont = pygame.font.SysFont('monaco', 24)
-    Ssurf = sFont.render('Score : {0}'.format(score), True, white)
+    Ssurf = sFont.render('Score : {0}'.format(mainScore), True, white)
     Srect = Ssurf.get_rect()
     if choice == 1:
         Srect.midtop = (80, 10)
@@ -109,173 +83,136 @@ def showScore(choice=1):
     playSurface.blit(Ssurf, Srect)
 
 
-def reset_game():
-    print("Game Reset")
-    reset_variables()
+def ResetGame():
+    global changeTo
+    global direction
+    global foodPos
+    global foodSpawn
+    global snakeBody
+    global snakePos
+    global mainScore
+    # Important Variables
+    snakePos = [100, 200]
+    snakeBody = [[100, 50], [90, 50], [80, 50]]  # ,[70,50],[60,50],[50,50],[40,50],[30,50],[20,50]
 
+    foodPos = [random.randrange(1, 72) * 10, random.randrange(1, 46) * 10]
+    foodSpawn = True
+    mainScore = 0
+    direction = 'UP'
+    changeTo = direction
 
-def random_input():
-    return random.randrange(1, 5)
+def RandomInput():
+    return random.randrange(0, 3)
 
-    # if x == 1:
-    #     keyboard.press('w')
-    #     keyboard.release('w')
-    # elif x == 2:
-    #     keyboard.press('d')
-    #     keyboard.release('d')
-    # elif x == 3:
-    #     keyboard.press('s')
-    #     keyboard.release('s')
-    # else:
-    #     keyboard.press('a')
-    #     keyboard.release('a')
-
-
-def random_games():
-    goalSteps = 300
-    print('in random games')
+def RandomGames():
     for _ in range(2):
-        reset_game()
+        ResetGame()
         for _ in range(goalSteps):
-            action = random_input()
-            observation, score, reward, done = main_game(action)
+            action = RandomInput()
+            observation, score, reward, done = MainGame(action)
             look(snakePos[0], snakePos[1])
             if done:
-                print('Observation: ', observation, 'Score: ', score, ' reward: ', reward, ' done: ', done)
                 break
-
     return
 
-
-def getObservation(snakePost):
+def GetObservation(snakePost):
     xIncrement = 10
     yIncrement = 10
     if direction == 'RIGHT':
         observation = np.array([
             # UP
-            look(snakePos[0], snakePos[1], 0, -yIncrement),
+            Look(snakePos[0], snakePos[1], 0, -yIncrement),
             # Down
-            look(snakePos[0], snakePos[1], 0, yIncrement),
+            Look(snakePos[0], snakePos[1], 0, yIncrement),
             # Up Right
-            look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
+            Look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
             # Down Right
-            look(snakePos[0], snakePos[1], xIncrement, yIncrement),
+            Look(snakePos[0], snakePos[1], xIncrement, yIncrement),
             # Right
-            look(snakePos[0], snakePos[1], xIncrement, 0)
+            Look(snakePos[0], snakePos[1], xIncrement, 0)
         ])
-
-
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1]), (snakePos[0] + offSet,snakePos[1]-viewDistance))
-        # #Down
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0] + offSet,snakePos[1]+viewDistance + offSet))
-        # #UP Right
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0]+viewDistance + offSet,snakePos[1]-viewDistance - offSet))
-        # #Down Right
-        # pygame.draw.line(playSurface, green, (snakePos[0],snakePos[1]), (snakePos[0]+viewDistance,snakePos[1]+viewDistance))
-        # #Right
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0]+viewDistance,snakePos[1] + offSet))
     if direction == 'LEFT':
         observation = np.array([
         # UP
-            look(snakePos[0], snakePos[1], 0, -yIncrement),
+            Look(snakePos[0], snakePos[1], 0, -yIncrement),
             # Down
-            look(snakePos[0], snakePos[1], 0, yIncrement),
+            Look(snakePos[0], snakePos[1], 0, yIncrement),
             # Up left
-            look(snakePos[0], snakePos[1], -xIncrement, -yIncrement),
+            Look(snakePos[0], snakePos[1], -xIncrement, -yIncrement),
             # Down Left
-            look(snakePos[0], snakePos[1], -xIncrement, yIncrement),
+            Look(snakePos[0], snakePos[1], -xIncrement, yIncrement),
             # Left
-            look(snakePos[0], snakePos[1], -xIncrement, 0)
+            Look(snakePos[0], snakePos[1], -xIncrement, 0)
         ])
-
-
-        # #UP
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1]), (snakePos[0] + offSet,snakePos[1]-viewDistance))
-        # #Left
-        # pygame.draw.line(playSurface, green, (snakePos[0],snakePos[1] + offSet), (snakePos[0]-viewDistance,snakePos[1] + offSet))
-        # #Down Left
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0]-viewDistance + offSet,snakePos[1]+viewDistance + offSet))
-        # #Up Left
-        # pygame.draw.line(playSurface, green, (snakePos[0],snakePos[1]), (snakePos[0]-viewDistance,snakePos[1]-viewDistance))
-        # #Down
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0] + offSet,snakePos[1]+viewDistance + offSet))
     if direction == 'UP':
         observation = np.array([
             # UP
-            look(snakePos[0], snakePos[1], 0, -yIncrement),
+            Look(snakePos[0], snakePos[1], 0, -yIncrement),
             # Right
-            look(snakePos[0], snakePos[1], xIncrement, 0),
+            Look(snakePos[0], snakePos[1], xIncrement, 0),
             # Up left
-            look(snakePos[0], snakePos[1], -xIncrement, -yIncrement),
+            Look(snakePos[0], snakePos[1], -xIncrement, -yIncrement),
             # Up Right
-            look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
+            Look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
             # Left
-            look(snakePos[0], snakePos[1], -xIncrement, 0)
+            Look(snakePos[0], snakePos[1], -xIncrement, 0)
         ])
-        #  #UP
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1]), (snakePos[0] + offSet,snakePos[1]-viewDistance))
-        # #Left
-        # pygame.draw.line(playSurface, green, (snakePos[0], snakePos[1] + offSet), (snakePos[0]-viewDistance,snakePos[1] + offSet))
-        # #UP Right
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0]+viewDistance +offSet,snakePos[1]- viewDistance - offSet))
-        # #Up Left
-        # pygame.draw.line(playSurface, green, (snakePos[0],snakePos[1]), (snakePos[0]-viewDistance,snakePos[1]-viewDistance))
-        # #Right
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0]+viewDistance +offSet,snakePos[1] + offSet))
     if direction == 'DOWN':
         observation = np.array([
             # Down
-            look(snakePos[0], snakePos[1], 0, yIncrement),
+            Look(snakePos[0], snakePos[1], 0, yIncrement),
             # Right
-            look(snakePos[0], snakePos[1], xIncrement, 0),
+            Look(snakePos[0], snakePos[1], xIncrement, 0),
             # Down left
-            look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
+            Look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
             # Down Right
-            look(snakePos[0], snakePos[1], xIncrement, yIncrement),
+            Look(snakePos[0], snakePos[1], xIncrement, yIncrement),
             # Left
-            look(snakePos[0], snakePos[1], -xIncrement, 0)
+            Look(snakePos[0], snakePos[1], -xIncrement, 0)
         ])
-        # #Down
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1]), (snakePos[0] + offSet,snakePos[1]+viewDistance))
-        # #Left
-        # pygame.draw.line(playSurface, green, (snakePos[0],snakePos[1] + offSet), (snakePos[0]-viewDistance,snakePos[1] + offSet))
-        # #Down Right
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet * 2,snakePos[1]+ offSet * 2), (snakePos[0]+viewDistance+ offSet * 2,snakePos[1]+viewDistance+ offSet * 2))
-        # #Down Left
-        # pygame.draw.line(playSurface, green, (snakePos[0],snakePos[1] + offSet * 2), (snakePos[0]-viewDistance,snakePos[1]+viewDistance + offSet * 2))
-        # #Right
-        # pygame.draw.line(playSurface, green, (snakePos[0] + offSet,snakePos[1] + offSet), (snakePos[0]+viewDistance +offSet,snakePos[1] + offSet))
     observation.shape = (15,)
     return observation
 
-def look(snakePosX, snakePosY, xIncrement, yIncrement):
-    x = snakePosX
-    y = snakePosY
-    isFoodFound = 0
-    isBodyFound = 0
-    isWallFound = 0
-    if (x > 720) or (y > 460) or (x < 0) or (y < 0):
-        isWallFound = 1
-    else:
+def Look(snakePosX, snakePosY, xIncrement, yIncrement):
+    x = snakePosX +xIncrement
+    y = snakePosY +yIncrement
+    foodFound = -1
+    bodyFound = -1
+    wallFound = -1
+    distance = np.sqrt((x - xIncrement ** 2) + (y - yIncrement ** 2))
+    maxDistance = np.sqrt((MAX_WIDTH ** 2) + (MAX_HEIGHT ** 2))
+    while ((x < MAX_WIDTH + 10) and (y < MAX_HEIGHT + 10)) and ((x > -1) and (y > -1)):
+        if x == foodPos[0] and y == foodPos[1]:
+            if foodFound == -1:
+               # print("Food Distance ", distance)
+                foodFound = distance
+        for bodySeg in snakeBody[1:]:
+            if x == bodySeg[0] and y == bodySeg[1]:
+                if bodyFound == -1:
+                   # print("Body Distance ", distance)
+                    bodyFound = distance
+        if (x >= MAX_WIDTH) or (y >= MAX_HEIGHT) or (x <= 0) or (y <= 0):
+            if wallFound == -1:
+               # print("wall Distance ", distance)
+                wallFound = distance
         x += xIncrement
         y += yIncrement
-        if snakePosX == foodPos[0] and snakePosY == foodPos[1]:
-            isFoodFound = 1
-        for bodySeg in snakeBody[1:]:
-            if snakePosX == bodySeg[0] and snakePosY == bodySeg[1]:
-                isBodyFound = 1
 
-        else:
-            look(x, y, xIncrement, yIncrement)
-    return [isFoodFound, isBodyFound, isWallFound]
+    if bodyFound == -1:
+        #print("Max Body Distance ")
+        bodyFound = maxDistance
+    if foodFound == -1:
+        #print("Max Food distance ")
+        foodFound = maxDistance
+    return [foodFound, bodyFound, wallFound]
 
 
-def main_game(action):
+def MainGame(action):
     global changeTo
     global direction
     global foodPos
     global foodSpawn
-    global score
+    global mainScore
     lose = False
     reward = 1
     observation = []
@@ -292,17 +229,17 @@ def main_game(action):
     #                 changeTo = 'DOWN'
 
     #Main Logic Of Game
-    #x == 2
-    if action == 2:
-        changeTo = 'RIGHT'
-    #x == 4
-    if action == 4:
-        changeTo = 'LEFT'
     #x == 1
     if action == 1:
-        changeTo = 'UP'
+        changeTo = 'RIGHT'
     #x == 3
     if action == 3:
+        changeTo = 'LEFT'
+    #x == 0
+    if action == 0:
+        changeTo = 'UP'
+    #x == 2
+    if action == 2:
         changeTo = 'DOWN'
 
     # Validation of direction
@@ -329,7 +266,7 @@ def main_game(action):
         reward += 10
         foodSpawn = False
     else:
-        score += 1
+        mainScore += 1
         snakeBody.pop()
 
     if foodSpawn == False:
@@ -341,11 +278,11 @@ def main_game(action):
         pygame.draw.rect(playSurface, green, pygame.Rect(pos[0], pos[1], 10, 10))
 
     pygame.draw.rect(playSurface, brown, pygame.Rect(foodPos[0], foodPos[1], 10, 10))
-    observation = getObservation(snakePos)
+    observation = GetObservation(snakePos)
     # Window Border
-    if snakePos[0] > 710 or snakePos[0] < 0:
+    if snakePos[0] > MAX_WIDTH or snakePos[0] < 0:
         lose = True
-    if snakePos[1] > 450 or snakePos[1] < 0:
+    if snakePos[1] > MAX_HEIGHT or snakePos[1] < 0:
         lose = True
     for block in snakeBody[1:]:
         if snakePos[0] == block[0] and snakePos[1] == block[1]:
@@ -353,43 +290,52 @@ def main_game(action):
     showScore()
     pygame.display.flip()
     fpsController.tick(10)
-    return observation, reward, lose, score
+    return observation, reward, lose, mainScore
 
 
-def create_dummy_model(training_data):
-    shape_second_parameter = len(training_data[0][0])
-    x = np.array([i[0] for i in training_data])
-    X = x.reshape(-1, shape_second_parameter, 1)
-    y = [i[1] for i in training_data]
-    model = create_neural_network_model(input_size=len(X[0]), output_size=len(y[0]))
+def CreateDummyModel(trainingData):
+    shapeSecondParameter = len(trainingData[0][0])
+    x = np.array([i[0] for i in trainingData])
+    X = x.reshape(-1, shapeSecondParameter, 1)
+    y = [i[1] for i in trainingData]
+    model = CreateNeuralNetworkModel(inputSize=len(X[0]), outputSize=len(y[0]))
     return model
 
+def CreateNeuralNetworkModel(inputSize, outputSize):
+    network = input_data(shape=[None, inputSize, 1], name='input')
+    network = tflearn.fully_connected(network, 32)
+    network = tflearn.fully_connected(network, 32)
+    network = fully_connected(network, outputSize, activation='softmax')
+    network = regression(network, name='targets')
+    model = tflearn.DNN(network, tensorboard_dir='tflearn_logs')
+    print("Complete create neural network")
+    return model
 
-def generateTrainingData(model):
+def GenerateTrainingData(model):
     global scoreRequirement
     trainingData = []
-    scores = []
     acceptedScores = []
 
     for _ in range(initialGames):
         print("Game # ", _, " out of ", str(initialGames))
         score = 0
-        scores =[]
-
-        reset_game()
+        scores = []
+        ResetGame()
+        gameMemory = []
+        previousObs = []
         for _ in range(goalSteps):
-            gameMemory = []
-            previousObs = []
+
             if len(previousObs) == 0:
-                action = random_input()
+                action = RandomInput()
             else:
                 if not model:
-                    action = random_input()
+                    action = RandomInput()
                 else:
                     prediction = model.predict(previousObs.reshape(-1, len(previousObs), 1))
                     action = np.argmax(prediction[0])
 
-            observation, reward, done, info = main_game(action)
+            observation, reward, done, info = MainGame(action)
+
             if len(previousObs) > 0:
                 gameMemory.append([previousObs, action])
             previousObs = observation
@@ -399,36 +345,79 @@ def generateTrainingData(model):
         print("Score: ",score, "Score Req: ", scoreRequirement)
         if score >= scoreRequirement:
             acceptedScores.append(score)
-            print('Accepted Scores', acceptedScores)
             for data in gameMemory:
-                print('Game Memory ', gameMemory)
                 actionSample = [0, 0, 0]
                 actionSample[data[1]] = 1
                 output = actionSample
                 trainingData.append([data[0], output])
-                print('training data ', trainingData)
             scores.append(score)
 
     print('Average Accepted Score ', mean(acceptedScores))
     print('Score Requirement ', scoreRequirement)
     print('Median score for accepted scores:', median(acceptedScores))
-
     scoreRequirement = mean(acceptedScores)
-    traingDataSave = np.array([trainingData, scoreRequirement])
-    np.save('TrainingData.npy', traingDataSave)
+    trainingDataSave = np.array([trainingData, scoreRequirement])
+    np.save('TrainingData.npy', trainingDataSave)
     return trainingData
 
 
+def TrainModel(trainingData, model=False):
+    shapeSecondParameter = len(trainingData[0][0])
+    x = np.array([i[0] for i in trainingData])
+    X = x.reshape(-1, shapeSecondParameter, 1)
+    y = [i[1] for i in trainingData]
 
-# drawEyes(snakePos)
+    model.fit({'input': X}, {'targets': y}, n_epoch=10, batch_size=16, show_metric=True)
+    model.save('TrainedSnake.tflearn')
 
-# random_games()
-trainingData = generateTrainingData(None)
-# print('TraingData ', trainingData)
-# print(create_dummy_model(trainingData))
+    return model
 
 
-# trainingData = generateTrainingData(None)
+def Evaluate(model):
+    # now it's time to evaluate the trained model
+    scores = []
+    choices = []
+    for each_game in range(20):
+        score = 0
+        gameMemory = []
+        previousObs = []
+        ResetGame()
+        for _ in range(goalSteps):
 
+            if len(previousObs) == 0:
+                action = RandomInput()
+            else:
+                prediction = model.predict(previousObs.reshape(-1, len(previousObs), 1))
+                action = np.argmax(prediction[0])
 
-# Try creating observation method to check if snake is in vicinity of food, wall or self
+            choices.append(action)
+
+            new_observation, reward, done, info = MainGame(action)
+            previousObs = new_observation
+            gameMemory.append([new_observation, action])
+            score += reward
+            if done:
+                break
+        scores.append(score)
+    print('Average Score is')
+    print('Average Score:', sum(scores) / len(scores))
+    print('choice 1:{}  choice 0:{}'.format(choices.count(1) / len(choices), choices.count(0) / len(choices)))
+    print('Score Requirement:', scoreRequirement)
+
+def main():
+    # fileName = 'TrainingData.npy'
+    # if os.path.isfile(fileName):
+    #     print('File exists, loading previous data!')
+    #     trainingData = list(np.load(fileName))
+    # else:
+    #     print("Training Data not found. Starting from scratch")
+    trainingData = GenerateTrainingData(None)
+
+    model = CreateDummyModel(trainingData)
+    model = TrainModel(trainingData, model)
+    Evaluate(model)
+
+main()
+
+#MainGame(None)
+#trainingData = GenerateTrainingData(None)

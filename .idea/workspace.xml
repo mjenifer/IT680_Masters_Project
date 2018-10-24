@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/venv/SnakeGame.py" line="75" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="1d7ba261-868f-4bcb-ad59-c8b4b8ba91ee" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MastersProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MastersProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/NeuralNetwork.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/NeuralNetwork.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/ScreenReader.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/ScreenReader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/KeyboardInputs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/ScreenReader.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/SnakeGame.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/SnakeGame.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,31 +22,33 @@
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.open.time.7" value="2" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="checkpoint" value="1" />
+          <entry key="meta" value="1" />
           <entry key="npy" value="2" />
-          <entry key="py" value="16" />
+          <entry key="py" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="16" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="Python" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="24" />
-          <entry key="py" value="13458" />
+          <entry key="py" value="15908" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="13482" />
+          <entry key="Python" value="15932" />
         </counts>
       </usages-collector>
     </session>
@@ -61,19 +58,43 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/SnakeGame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="413" column="70" selection-start-line="413" selection-start-column="70" selection-end-line="413" selection-end-column="70" />
+            <state relative-caret-position="255">
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
               <folding>
                 <element signature="e#24#56#0" expanded="true" />
-                <marker date="1539483169779" expanded="true" signature="520:521" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="847:848" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="962:963" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="2006:2008" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="3581:8841" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="8992:9473" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="9495:9500" ph="..." />
-                <marker date="1539483169779" expanded="true" signature="12377:12380" ph="..." />
+                <element signature="e#3227#8507#0" />
+                <element signature="e#8822#9426#0" />
+                <element signature="e#9491#9551#0" />
+                <element signature="e#9584#9644#0" />
+                <marker date="1540349335302" expanded="true" signature="440:441" ph="..." />
+                <marker date="1540349335302" expanded="true" signature="735:736" ph="..." />
+                <marker date="1540349335302" expanded="true" signature="863:864" ph="..." />
+                <marker date="1540349335302" expanded="true" signature="1462:1464" ph="..." />
+                <marker date="1540349335302" expanded="true" signature="2968:5021" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/checkpoint">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/numpy/lib/function_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-209">
+              <caret line="5113" column="4" selection-start-line="5113" selection-start-column="4" selection-end-line="5113" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tflearn/layers/core.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-267">
+              <caret line="95" column="4" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -81,17 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/statistics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
+            <state relative-caret-position="5134">
               <caret line="310" selection-start-line="310" selection-end-line="310" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/ScreenReader.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-87">
-              <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -99,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-233998280/numpy/core/multiarray.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
+            <state relative-caret-position="97036">
               <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
             </state>
           </provider>
@@ -116,40 +128,41 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>460</find>
-      <find>bloc</find>
-      <find>sFontsFont</find>
-      <find>changeTo</find>
-      <find>QUIT</find>
-      <find>foodSpawn</find>
-      <find>kEYBOARD D</find>
-      <find>grads_and_vars_feed</find>
-      <find>init</find>
-      <find>cross_entropy</find>
-      <find>fpsController</find>
-      <find>fpsControlle</find>
-      <find>snake</find>
-      <find>D Pressed</find>
-      <find>snakeBody</find>
       <find>45</find>
       <find>game()</find>
       <find>ga</find>
       <find>rewa</find>
       <find>reset</find>
       <find>random</find>
-      <find>print</find>
       <find>eyes</find>
       <find>prevousObs</find>
       <find>foodPos</find>
-      <find>main_</find>
       <find>snakePos</find>
       <find>getOb</find>
-      <find>random_</find>
       <find>scoreRequirement</find>
+      <find>goal</find>
+      <find>score</find>
+      <find>env</find>
+      <find>drawey</find>
+      <find>look</find>
+      <find>generateTrainingData</find>
+      <find>learning_rate</find>
+      <find>reset_variables</find>
+      <find>random_</find>
+      <find>train_model</find>
+      <find>main_</find>
+      <find>Random_</find>
+      <find>getob</find>
+      <find>720</find>
+      <find>output_</find>
+      <find>training_data</find>
+      <find>print</find>
+      <find>mainScore</find>
     </findStrings>
     <replaceStrings>
       <replace>viewDistance</replace>
       <replace>previousObs</replace>
+      <replace>TrainModel</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -168,10 +181,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="480" />
+    <option name="y" value="27" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -179,7 +192,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,6 +208,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -353,12 +366,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.091675445" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14330874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32321042" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32321042" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -425,44 +438,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/ScreenReader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-87">
-          <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/venv/TrainingData.npy">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-233998280/numpy/core/multiarray.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/encodings/cp1252.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
+        <state relative-caret-position="199">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/statistics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="5134">
           <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/TrainingData.npy">
+    <entry file="file://$PROJECT_DIR$/venv/ScreenReader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="36" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/-233998280/numpy/core/multiarray.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97036">
+          <caret line="5708" column="4" selection-start-line="5708" selection-start-column="4" selection-end-line="5708" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/numpy/lib/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-209">
+          <caret line="5113" column="4" selection-start-line="5113" selection-start-column="4" selection-end-line="5113" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/TrainedSnake.tflearn.meta">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/tflearn/layers/core.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-267">
+          <caret line="95" column="4" selection-start-line="95" selection-start-column="4" selection-end-line="95" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/checkpoint">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/SnakeGame.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="413" column="70" selection-start-line="413" selection-start-column="70" selection-end-line="413" selection-end-column="70" />
+        <state relative-caret-position="255">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding>
             <element signature="e#24#56#0" expanded="true" />
-            <marker date="1539483169779" expanded="true" signature="520:521" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="847:848" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="962:963" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="2006:2008" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="3581:8841" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="8992:9473" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="9495:9500" ph="..." />
-            <marker date="1539483169779" expanded="true" signature="12377:12380" ph="..." />
+            <element signature="e#3227#8507#0" />
+            <element signature="e#8822#9426#0" />
+            <element signature="e#9491#9551#0" />
+            <element signature="e#9584#9644#0" />
+            <marker date="1540349335302" expanded="true" signature="440:441" ph="..." />
+            <marker date="1540349335302" expanded="true" signature="735:736" ph="..." />
+            <marker date="1540349335302" expanded="true" signature="863:864" ph="..." />
+            <marker date="1540349335302" expanded="true" signature="1462:1464" ph="..." />
+            <marker date="1540349335302" expanded="true" signature="2968:5021" ph="..." />
           </folding>
         </state>
       </provider>
