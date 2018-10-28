@@ -7,15 +7,15 @@ import tflearn
 import tensorflow as tf
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
+from tensorflow.keras.callbacks import TensorBoard
 from statistics import median, mean
 from collections import Counter
 import numpy as np
 
 
 goalSteps = 300
-scoreRequirement = 100
-initialGames = 3000
-
+scoreRequirement = 150
+initialGames = 20
 keyboard = Controller()
 
 # check for initialising error
@@ -171,16 +171,18 @@ def GetObservation(snakePost):
             Look(snakePos[0], snakePos[1], -xIncrement, 0)
         ])
     observation.shape = (15,)
-    return observation
+    scale = np.sqrt((MAX_WIDTH ** 2) + (MAX_HEIGHT ** 2))
+    observationScaled = 1-2 * observation / scale
+    return observationScaled
 
 def Look(snakePosX, snakePosY, xIncrement, yIncrement):
-    x = snakePosX +xIncrement
-    y = snakePosY +yIncrement
+    x = snakePosX + xIncrement
+    y = snakePosY + yIncrement
     foodFound = -1
     bodyFound = -1
     wallFound = -1
-    distance = np.sqrt((x - xIncrement ** 2) + (y - yIncrement ** 2))
-    maxDistance = np.sqrt((MAX_WIDTH ** 2) + (MAX_HEIGHT ** 2))
+    distance = np.sqrt((x - xIncrement) ** 2 + (y - yIncrement) ** 2)
+    maxDistance = np.sqrt(MAX_WIDTH ** 2 + MAX_HEIGHT ** 2)
     while ((x < MAX_WIDTH + 10) and (y < MAX_HEIGHT + 10)) and ((x > -1) and (y > -1)):
         if x == foodPos[0] and y == foodPos[1]:
             if foodFound == -1:
@@ -311,11 +313,11 @@ def CreateNeuralNetworkModel(inputSize, outputSize):
     print("Complete create neural network")
     return model
 
+#Generate Training Data by using random inputs
 def GenerateTrainingData(model):
     global scoreRequirement
     trainingData = []
     acceptedScores = []
-
     for _ in range(initialGames):
         print("Game # ", _, " out of ", str(initialGames))
         score = 0
@@ -333,7 +335,6 @@ def GenerateTrainingData(model):
                 else:
                     prediction = model.predict(previousObs.reshape(-1, len(previousObs), 1))
                     action = np.argmax(prediction[0])
-
             observation, reward, done, info = MainGame(action)
 
             if len(previousObs) > 0:
@@ -352,32 +353,29 @@ def GenerateTrainingData(model):
                 trainingData.append([data[0], output])
             scores.append(score)
 
-    print('Average Accepted Score ', mean(acceptedScores))
+#    print('Average Accepted Score ', mean(acceptedScores))
     print('Score Requirement ', scoreRequirement)
-    print('Median score for accepted scores:', median(acceptedScores))
+ #   print('Median score for accepted scores:', median(acceptedScores))
     scoreRequirement = mean(acceptedScores)
     trainingDataSave = np.array([trainingData, scoreRequirement])
     np.save('TrainingData.npy', trainingDataSave)
     return trainingData
 
-
+#
 def TrainModel(trainingData, model=False):
     shapeSecondParameter = len(trainingData[0][0])
     x = np.array([i[0] for i in trainingData])
     X = x.reshape(-1, shapeSecondParameter, 1)
     y = [i[1] for i in trainingData]
-
     model.fit({'input': X}, {'targets': y}, n_epoch=10, batch_size=16, show_metric=True)
-    model.save('TrainedSnake.tflearn')
-
+    model.save('SnakeModel.tflearn')
     return model
 
-
-def Evaluate(model):
-    # now it's time to evaluate the trained model
+#Evaluate the generated model
+def EvaluateModel(model):
     scores = []
     choices = []
-    for each_game in range(20):
+    for _ in range(20):
         score = 0
         gameMemory = []
         previousObs = []
@@ -388,34 +386,38 @@ def Evaluate(model):
                 action = RandomInput()
             else:
                 prediction = model.predict(previousObs.reshape(-1, len(previousObs), 1))
+
                 action = np.argmax(prediction[0])
-
             choices.append(action)
+            newObservation, reward, done, info = MainGame(action)
 
-            new_observation, reward, done, info = MainGame(action)
-            previousObs = new_observation
-            gameMemory.append([new_observation, action])
+            previousObs = newObservation
+            gameMemory.append([newObservation, action])
             score += reward
             if done:
                 break
         scores.append(score)
-    print('Average Score is')
     print('Average Score:', sum(scores) / len(scores))
-    print('choice 1:{}  choice 0:{}'.format(choices.count(1) / len(choices), choices.count(0) / len(choices)))
-    print('Score Requirement:', scoreRequirement)
 
 def main():
-    # fileName = 'TrainingData.npy'
-    # if os.path.isfile(fileName):
-    #     print('File exists, loading previous data!')
-    #     trainingData = list(np.load(fileName))
-    # else:
-    #     print("Training Data not found. Starting from scratch")
-    trainingData = GenerateTrainingData(None)
 
+    # if os.path.isfile("TrainingData.npy"):
+    #     print('File exists, loading previous data!')
+    #     trainingData = list(np.load("TrainingData.npy"))
+    #     model = CreateDummyModel(trainingData)
+    #     model = TrainModel(trainingData, model)
+    #     EvaluateModel(model)
+    # else:
+
+    #Generate Training Data using random inputs
+    trainingData = GenerateTrainingData(None)
+    #Build model using parameters within the training data
     model = CreateDummyModel(trainingData)
+    #Train the model using the generated dummy model and the training data
     model = TrainModel(trainingData, model)
-    Evaluate(model)
+    #Put the model to the test
+    EvaluateModel(model)
+
 
 main()
 
