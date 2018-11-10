@@ -12,10 +12,9 @@ from statistics import median, mean
 from collections import Counter
 import numpy as np
 
-
 goalSteps = 300
 scoreRequirement = 150
-initialGames = 20
+initialGames = 100
 keyboard = Controller()
 
 # check for initialising error
@@ -110,96 +109,98 @@ def RandomGames():
         for _ in range(goalSteps):
             action = RandomInput()
             observation, score, reward, done = MainGame(action)
-            look(snakePos[0], snakePos[1])
             if done:
                 break
     return
 
-def GetObservation(snakePost):
+def GetObservation():
     xIncrement = 10
     yIncrement = 10
     if direction == 'RIGHT':
         observation = np.array([
             # UP
-            Look(snakePos[0], snakePos[1], 0, -yIncrement),
+            Look(0, -yIncrement),
             # Down
-            Look(snakePos[0], snakePos[1], 0, yIncrement),
+            Look(0, yIncrement),
             # Up Right
-            Look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
+            Look(xIncrement, -yIncrement),
             # Down Right
-            Look(snakePos[0], snakePos[1], xIncrement, yIncrement),
+            Look(xIncrement, yIncrement),
             # Right
-            Look(snakePos[0], snakePos[1], xIncrement, 0)
+            Look(xIncrement, 0)
         ])
     if direction == 'LEFT':
         observation = np.array([
         # UP
-            Look(snakePos[0], snakePos[1], 0, -yIncrement),
+            Look(0, -yIncrement),
             # Down
-            Look(snakePos[0], snakePos[1], 0, yIncrement),
+            Look(0, yIncrement),
             # Up left
-            Look(snakePos[0], snakePos[1], -xIncrement, -yIncrement),
+            Look(-xIncrement, -yIncrement),
             # Down Left
-            Look(snakePos[0], snakePos[1], -xIncrement, yIncrement),
+            Look(-xIncrement, yIncrement),
             # Left
-            Look(snakePos[0], snakePos[1], -xIncrement, 0)
+            Look(-xIncrement, 0)
         ])
     if direction == 'UP':
         observation = np.array([
             # UP
-            Look(snakePos[0], snakePos[1], 0, -yIncrement),
+            Look(0, -yIncrement),
             # Right
-            Look(snakePos[0], snakePos[1], xIncrement, 0),
+            Look(xIncrement, 0),
             # Up left
-            Look(snakePos[0], snakePos[1], -xIncrement, -yIncrement),
+            Look(-xIncrement, -yIncrement),
             # Up Right
-            Look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
+            Look(xIncrement, -yIncrement),
             # Left
-            Look(snakePos[0], snakePos[1], -xIncrement, 0)
+            Look(-xIncrement, 0)
         ])
     if direction == 'DOWN':
         observation = np.array([
             # Down
-            Look(snakePos[0], snakePos[1], 0, yIncrement),
+            Look(0, yIncrement),
             # Right
-            Look(snakePos[0], snakePos[1], xIncrement, 0),
+            Look(xIncrement, 0),
             # Down left
-            Look(snakePos[0], snakePos[1], xIncrement, -yIncrement),
+            Look(xIncrement, -yIncrement),
             # Down Right
-            Look(snakePos[0], snakePos[1], xIncrement, yIncrement),
+            Look(xIncrement, yIncrement),
             # Left
-            Look(snakePos[0], snakePos[1], -xIncrement, 0)
+            Look(-xIncrement, 0)
         ])
     observation.shape = (15,)
     scale = np.sqrt((MAX_WIDTH ** 2) + (MAX_HEIGHT ** 2))
     observationScaled = 1-2 * observation / scale
     return observationScaled
 
-def Look(snakePosX, snakePosY, xIncrement, yIncrement):
-    x = snakePosX + xIncrement
-    y = snakePosY + yIncrement
+def Look(xIncrement, yIncrement):
+    x = snakePos[0]
+    y = snakePos[1]
     foodFound = -1
     bodyFound = -1
     wallFound = -1
-    distance = np.sqrt((x - xIncrement) ** 2 + (y - yIncrement) ** 2)
     maxDistance = np.sqrt(MAX_WIDTH ** 2 + MAX_HEIGHT ** 2)
+    counter = 0
     while ((x < MAX_WIDTH + 10) and (y < MAX_HEIGHT + 10)) and ((x > -1) and (y > -1)):
         if x == foodPos[0] and y == foodPos[1]:
+
+            distance = np.sqrt((foodPos[0] - snakePos[0]) ** 2 + (foodPos[1] - snakePos[1]) ** 2)
             if foodFound == -1:
-               # print("Food Distance ", distance)
                 foodFound = distance
         for bodySeg in snakeBody[1:]:
             if x == bodySeg[0] and y == bodySeg[1]:
+                distance = np.sqrt((foodPos[0] - bodySeg[0]) ** 2 + (foodPos[1] - bodySeg[1]) ** 2)
                 if bodyFound == -1:
+
                    # print("Body Distance ", distance)
                     bodyFound = distance
         if (x >= MAX_WIDTH) or (y >= MAX_HEIGHT) or (x <= 0) or (y <= 0):
+            distance = np.sqrt((foodPos[0] - MAX_WIDTH) ** 2 + (foodPos[1] - MAX_HEIGHT) ** 2)
             if wallFound == -1:
                # print("wall Distance ", distance)
                 wallFound = distance
         x += xIncrement
         y += yIncrement
-
     if bodyFound == -1:
         #print("Max Body Distance ")
         bodyFound = maxDistance
@@ -256,12 +257,16 @@ def MainGame(action):
 
     if direction == 'RIGHT':
         snakePos[0] += 10
+        observation = GetObservation()
     if direction == 'LEFT':
         snakePos[0] -= 10
+        observation = GetObservation()
     if direction == 'UP':
         snakePos[1] -= 10
+        observation = GetObservation()
     if direction == 'DOWN':
         snakePos[1] += 10
+        observation = GetObservation()
     # snake body mechanism
     snakeBody.insert(0, list(snakePos))
     if snakePos[0] == foodPos[0] and snakePos[1] == foodPos[1]:
@@ -280,7 +285,7 @@ def MainGame(action):
         pygame.draw.rect(playSurface, green, pygame.Rect(pos[0], pos[1], 10, 10))
 
     pygame.draw.rect(playSurface, brown, pygame.Rect(foodPos[0], foodPos[1], 10, 10))
-    observation = GetObservation(snakePos)
+
     # Window Border
     if snakePos[0] > MAX_WIDTH or snakePos[0] < 0:
         lose = True
@@ -305,9 +310,10 @@ def CreateDummyModel(trainingData):
 
 def CreateNeuralNetworkModel(inputSize, outputSize):
     network = input_data(shape=[None, inputSize, 1], name='input')
-    network = tflearn.fully_connected(network, 32)
-    network = tflearn.fully_connected(network, 32)
-    network = fully_connected(network, outputSize, activation='softmax')
+    print(network)
+    network = tflearn.fully_connected(network, 32,activation='relu')
+    network = tflearn.fully_connected(network, 32, activation='relu')
+    network = tflearn.fully_connected(network, outputSize, activation='softmax')
     network = regression(network, name='targets')
     model = tflearn.DNN(network, tensorboard_dir='tflearn_logs')
     print("Complete create neural network")
@@ -351,11 +357,11 @@ def GenerateTrainingData(model):
                 actionSample[data[1]] = 1
                 output = actionSample
                 trainingData.append([data[0], output])
-            scores.append(score)
+        scores.append(score)
 
-#    print('Average Accepted Score ', mean(acceptedScores))
+    print('Average Accepted Score ', mean(acceptedScores))
     print('Score Requirement ', scoreRequirement)
- #   print('Median score for accepted scores:', median(acceptedScores))
+    print('Median score for accepted scores:', median(acceptedScores))
     scoreRequirement = mean(acceptedScores)
     trainingDataSave = np.array([trainingData, scoreRequirement])
     np.save('TrainingData.npy', trainingDataSave)
