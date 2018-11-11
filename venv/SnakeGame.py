@@ -181,10 +181,19 @@ def Look(xIncrement, yIncrement):
                 if bodyFound == -1:
                     bodyFound = distance
         if (x >= MAX_WIDTH) or (y >= MAX_HEIGHT) or (x <= 0) or (y <= 0):
-            distance = np.sqrt((snakePos[0] - MAX_WIDTH) ** 2 + (snakePos[1] - MAX_HEIGHT) ** 2)
+            if direction == "RIGHT":
+                distance = np.sqrt((snakePos[0] - MAX_WIDTH) ** 2)
+            elif direction == "LEFT":
+                distance = np.sqrt((snakePos[0]) ** 2)
+            elif direction == "DOWN":
+                distance = np.sqrt((snakePos[1] - MAX_WIDTH) ** 2)
+            elif direction == "UP":
+                distance = np.sqrt((snakePos[1]) ** 2)
+
             if wallFound == -1:
-                #print("wall Distance ", distance, "snakePos", snakePos, "MaxWidth", MAX_WIDTH, "maxHeight",MAX_HEIGHT)
+                #print("direction",direction, "wall Distance ", distance, "snakePos", snakePos, "MaxWidth", MAX_WIDTH, "maxHeight",MAX_HEIGHT)
                 wallFound = distance
+
         x += xIncrement
         y += yIncrement
     if bodyFound == -1:
@@ -205,84 +214,84 @@ def MainGame(action):
     lose = False
     reward = 1
     observation = []
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT or event.key == ord('d'):
-                    changeTo = 'RIGHT'
-                if event.key == pygame.K_LEFT or event.key == ord('a'):
-                    changeTo = 'LEFT'
-                if event.key == pygame.K_UP or event.key == ord('w'):
-                    changeTo = 'UP'
-                if event.key == pygame.K_DOWN or event.key == ord('s'):
-                    changeTo = 'DOWN'
+    # while True:
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.KEYDOWN:
+    #             if event.key == pygame.K_RIGHT or event.key == ord('d'):
+    #                 changeTo = 'RIGHT'
+    #             if event.key == pygame.K_LEFT or event.key == ord('a'):
+    #                 changeTo = 'LEFT'
+    #             if event.key == pygame.K_UP or event.key == ord('w'):
+    #                 changeTo = 'UP'
+    #             if event.key == pygame.K_DOWN or event.key == ord('s'):
+    #                 changeTo = 'DOWN'
 
-        #Main Logic Of Game
-        #x == 1
-        if action == 1:
-            changeTo = 'RIGHT'
-        #x == 3
-        if action == 3:
-            changeTo = 'LEFT'
-        #x == 0
-        if action == 0:
-            changeTo = 'UP'
-        #x == 2
-        if action == 2:
-            changeTo = 'DOWN'
+    #Main Logic Of Game
+    #x == 1
+    if action == 1:
+        changeTo = 'RIGHT'
+    #x == 3
+    if action == 3:
+        changeTo = 'LEFT'
+    #x == 0
+    if action == 0:
+        changeTo = 'UP'
+    #x == 2
+    if action == 2:
+        changeTo = 'DOWN'
 
-        # Validation of direction
-        if changeTo == 'RIGHT' and not direction == 'LEFT':
-            direction = 'RIGHT'
-        if changeTo == 'LEFT' and not direction == 'RIGHT':
-            direction = 'LEFT'
-        if changeTo == 'UP' and not direction == 'DOWN':
-            direction = 'UP'
-        if changeTo == 'DOWN' and not direction == 'UP':
-            direction = 'DOWN'
+    # Validation of direction
+    if changeTo == 'RIGHT' and not direction == 'LEFT':
+        direction = 'RIGHT'
+    if changeTo == 'LEFT' and not direction == 'RIGHT':
+        direction = 'LEFT'
+    if changeTo == 'UP' and not direction == 'DOWN':
+        direction = 'UP'
+    if changeTo == 'DOWN' and not direction == 'UP':
+        direction = 'DOWN'
 
-        if direction == 'RIGHT':
-            snakePos[0] += 10
-            observation = GetObservation()
-        if direction == 'LEFT':
-            snakePos[0] -= 10
-            observation = GetObservation()
-        if direction == 'UP':
-            snakePos[1] -= 10
-            observation = GetObservation()
-        if direction == 'DOWN':
-            snakePos[1] += 10
-            observation = GetObservation()
-        # snake body mechanism
-        snakeBody.insert(0, list(snakePos))
-        if snakePos[0] == foodPos[0] and snakePos[1] == foodPos[1]:
-            reward += 10
-            foodSpawn = False
-        else:
-            mainScore += 1
-            snakeBody.pop()
+    if direction == 'RIGHT':
+        snakePos[0] += 10
+        observation = GetObservation()
+    if direction == 'LEFT':
+        snakePos[0] -= 10
+        observation = GetObservation()
+    if direction == 'UP':
+        snakePos[1] -= 10
+        observation = GetObservation()
+    if direction == 'DOWN':
+        snakePos[1] += 10
+        observation = GetObservation()
+    # snake body mechanism
+    snakeBody.insert(0, list(snakePos))
+    if snakePos[0] == foodPos[0] and snakePos[1] == foodPos[1]:
+        reward += 10
+        foodSpawn = False
+    else:
+        mainScore += 1
+        snakeBody.pop()
 
-        if foodSpawn == False:
-            foodPos = [random.randrange(1, 72) * 10, random.randrange(1, 46) * 10]
-        foodSpawn = True
+    if foodSpawn == False:
+        foodPos = [random.randrange(1, 72) * 10, random.randrange(1, 46) * 10]
+    foodSpawn = True
 
-        playSurface.fill(black)
-        for pos in snakeBody:
-            pygame.draw.rect(playSurface, green, pygame.Rect(pos[0], pos[1], 10, 10))
+    playSurface.fill(black)
+    for pos in snakeBody:
+        pygame.draw.rect(playSurface, green, pygame.Rect(pos[0], pos[1], 10, 10))
 
-        pygame.draw.rect(playSurface, brown, pygame.Rect(foodPos[0], foodPos[1], 10, 10))
+    pygame.draw.rect(playSurface, brown, pygame.Rect(foodPos[0], foodPos[1], 10, 10))
 
-        # Window Border
-        if snakePos[0] > MAX_WIDTH or snakePos[0] < 0:
+    # Window Border
+    if snakePos[0] > MAX_WIDTH or snakePos[0] < 0:
+        lose = True
+    if snakePos[1] > MAX_HEIGHT or snakePos[1] < 0:
+        lose = True
+    for block in snakeBody[1:]:
+        if snakePos[0] == block[0] and snakePos[1] == block[1]:
             lose = True
-        if snakePos[1] > MAX_HEIGHT or snakePos[1] < 0:
-            lose = True
-        for block in snakeBody[1:]:
-            if snakePos[0] == block[0] and snakePos[1] == block[1]:
-                lose = True
-        showScore()
-        pygame.display.flip()
-        fpsController.tick(10)
+    showScore()
+    pygame.display.flip()
+    fpsController.tick(10)
     return observation, reward, lose, mainScore
 
 
@@ -296,9 +305,8 @@ def CreateDummyModel(trainingData):
 
 def CreateNeuralNetworkModel(inputSize, outputSize):
     network = input_data(shape=[None, inputSize, 1], name='input')
-    print(network)
-    network = tflearn.fully_connected(network, 32,activation='relu')
-    network = tflearn.fully_connected(network, 32, activation='relu')
+    network = tflearn.fully_connected(network, 32)
+    network = tflearn.fully_connected(network, 32)
     network = tflearn.fully_connected(network, outputSize, activation='softmax')
     network = regression(network, name='targets')
     model = tflearn.DNN(network, tensorboard_dir='tflearn_logs')
@@ -391,27 +399,27 @@ def EvaluateModel(model):
         scores.append(score)
     print('Average Score:', sum(scores) / len(scores))
 
-# def main():
-#
-#     # if os.path.isfile("TrainingData.npy"):
-#     #     print('File exists, loading previous data!')
-#     #     trainingData = list(np.load("TrainingData.npy"))
-#     #     model = CreateDummyModel(trainingData)
-#     #     model = TrainModel(trainingData, model)
-#     #     EvaluateModel(model)
-#     # else:
-#
-#     #Generate Training Data using random inputs
-#     trainingData = GenerateTrainingData(None)
-#     #Build model using parameters within the training data
-#     model = CreateDummyModel(trainingData)
-#     #Train the model using the generated dummy model and the training data
-#     model = TrainModel(trainingData, model)
-#     #Put the model to the test
-#     EvaluateModel(model)
-#
-#
-# main()
+def main():
 
-MainGame(None)
+    # if os.path.isfile("TrainingData.npy"):
+    #     print('File exists, loading previous data!')
+    #     trainingData = list(np.load("TrainingData.npy"))
+    #     model = CreateDummyModel(trainingData)
+    #     model = TrainModel(trainingData, model)
+    #     EvaluateModel(model)
+    # else:
+
+    #Generate Training Data using random inputs
+    trainingData = GenerateTrainingData(None)
+    #Build model using parameters within the training data
+    model = CreateDummyModel(trainingData)
+    #Train the model using the generated dummy model and the training data
+    model = TrainModel(trainingData, model)
+    #Put the model to the test
+    EvaluateModel(model)
+
+
+main()
+
+#MainGame(None)
 #trainingData = GenerateTrainingData(None)
